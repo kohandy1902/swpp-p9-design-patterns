@@ -2,6 +2,7 @@ class B:
     class _B:
         def __init__(self, value):
             self.value = value
+
     _instance = None
 
     # By defining the method as static method,
@@ -24,6 +25,7 @@ class B:
 
     def __init__(self, value=0):
         # TODO: fill constructor
+        B._instance = B._B(value)
 
 
 if __name__ == "__main__":
