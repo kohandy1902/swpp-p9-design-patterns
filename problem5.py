@@ -10,27 +10,38 @@ class Counselor:
 
 
 class PhoneCall:
-    def __init__(self, current_time='weekdays'):
+    def __init__(self, current_time="weekdays"):
         self.counselors = [Counselor(), Counselor()]
         self.current_time = current_time
 
     def talk(self):
-        if self.current_time == 'weekdays':
+        if self.current_time == "weekdays":
             # TODO: fill this function
             # If you want, you can add time.sleep(0.1) before you call talk() in Counselor
             # to simulate the waiting time.
+            if self.counselors[0].busy == False:
+                time.sleep(0.1)
+                self.counselors[0].busy = True
+                self.counselors[0].talk()
+            elif self.counselors[1].busy == False:
+                time.sleep(0.1)
+                self.counselors[1].busy = True
+                self.counselors[1].talk()
+            else:
+                print("No available counselor")
+
         else:
             time.sleep(0.1)
-            print('Counselor will not talk to you')
+            print("Counselor will not talk to you")
 
 
 if __name__ == "__main__":
-    p = PhoneCall('weekdays')
+    p = PhoneCall("weekdays")
     p.talk()
     p.talk()
     p.talk()
 
-    p = PhoneCall('weekend')
+    p = PhoneCall("weekend")
     p.talk()
 
     """
